@@ -1,0 +1,24 @@
+- app/
+  - controllers/
+    - UserController.php
+    - ReservationController.php
+    - FestivalController.php
+  - models/
+    - User.php
+    - Reservation.php
+    - Festival.php
+  - views/
+    - user/
+      - login.php
+      - register.php
+      - profile.php
+    - admin/
+      - dashboard.php
+      - reservations.php
+- config/
+  - database.php
+- public/
+  - css/
+  - js/
+- index.php
+
