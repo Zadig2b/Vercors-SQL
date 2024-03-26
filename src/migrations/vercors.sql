@@ -47,7 +47,7 @@ CREATE TABLE pass(
    PRIMARY KEY(Id_pass)
 );
 
-CREATE TABLE contains(
+CREATE TABLE reservation_options(
    Id_reservation INT,
    Id_options INT,
    quantity INT NOT NULL,
