@@ -7,6 +7,7 @@
     - User.php
     - Reservation.php
     - Festival.php
+    - Database.php
   - views/
     - user/
       - login.php
@@ -15,10 +16,8 @@
     - admin/
       - dashboard.php
       - reservations.php
-- config/
-  - database.php
-- public/
-  - css/
-  - js/
-- index.php
+  - public/
+    - css/
+    - js/
+  - index.php
 
