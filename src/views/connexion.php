@@ -26,7 +26,7 @@ if (isset($_POST['password'])) {
 }
 
 // Inclure le fichier d'en-tête
-include "includes/header.php";
+include "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ include "includes/header.php";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion Admin</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./../../public\assets\style.css">
 </head>
 <body>
   <h1>Connexion Admin</h1>

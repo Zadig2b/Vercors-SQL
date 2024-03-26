@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
   // abort
-  header('location:tableau-de-bord.php');
+  header('location:./src/views/admin.php');
   die;
 }
 
