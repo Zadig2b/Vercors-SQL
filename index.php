@@ -13,7 +13,7 @@ if (isset($_GET['erreur'])) {
 }
 
 
-include "includes/header.php";
+include "src/views/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ include "includes/header.php";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulaire de réservation Music Vercos Festival</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./public/assets/style.css">
 </head>
 <body>
 <p id="totalPrice">Prix Total : </p>
@@ -148,7 +148,7 @@ include "includes/header.php";
 
   </form>
 </body>
-<script src="./script.js"></script>
+<script src="./public/assets/script.js"></script>
 </html>
 
 <?php

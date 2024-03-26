@@ -20,14 +20,14 @@ switch ($url) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activité 4 - Formulaire inscription</title>
-  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="../../public/assets/main.css">
   <?php if ($url == 'tableau-de-bord') { ?>
-    <link rel="stylesheet" href="assets/dashboard.css">
+    <link rel="stylesheet" href="../../public/assets/dashboard.css">
   <?php } else if ($url == 'tableau-admin') { ?>
-    <link rel="stylesheet" href="assets/dashboard.css">
-    <link rel="stylesheet" href="assets/admin.css">
+    <link rel="stylesheet" href="../../public/assets/dashboard.css">
+    <link rel="stylesheet" href="../../public/assets/admin.css">
   <?php } else {?>
-    <link rel="stylesheet" href="assets/form.css">
+    <link rel="stylesheet" href="../../public/assets/form.css">
   <?php } ?>
   <script src="assets/script.js" defer></script>
 </head>
