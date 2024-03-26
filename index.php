@@ -12,8 +12,19 @@ if (isset($_GET['erreur'])) {
   $code_erreur = (int) $_GET['erreur'];
 }
 
-
 include "src/views/header.php";
+
+// Include the Database class
+require_once 'src/Models/Database.php';
+
+// Create an instance of the Database class
+$database = new src\Models\Database();
+
+// Call the initialisationBDD() method
+$result = $database->initialisationBDD();
+
+// Output the result
+echo $result;
 ?>
 
 <!DOCTYPE html>
@@ -25,10 +36,9 @@ include "src/views/header.php";
   <link rel="stylesheet" href="./public/assets/style.css">
 </head>
 <body>
-<p id="totalPrice">Prix Total : </p>
-
   <form action="traitement.php" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
+  <p id="totalPrice">Prix Total : </p>
 
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>

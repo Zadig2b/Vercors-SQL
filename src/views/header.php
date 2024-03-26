@@ -41,6 +41,7 @@ switch ($url) {
       <?php } else { ?>
         <a href="./../../index.php">Réservation</a>
         <a href="./src/views/admin.php">Admin</a>
+        <a href="./src/views/inscription.php">Inscription</a>
       <?php } ?>
     </div>
   </div>

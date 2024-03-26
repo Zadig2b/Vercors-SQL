@@ -1,27 +1,16 @@
 <?php
-
-class Config {
-    private $host = "localhost"; // Adresse du serveur MySQL
-    private $db_name = "vercors"; // Nom de votre base de données
-    private $username = "root"; // Nom d'utilisateur MySQL
-    private $password = ""; // Mot de passe MySQL
-
-    // Méthodes pour obtenir les informations de connexion à la base de données
-    public function getHost() {
-        return $this->host;
-    }
-
-    public function getDbName() {
-        return $this->db_name;
-    }
-
-    public function getUsername() {
-        return $this->username;
-    }
-
-    public function getPassword() {
-        return $this->password;
-    }
-}
-
-?>
+      // lors de la mise en open source, remplacer les infos concernant la base de données.
+      
+      define('DB_HOST', 'localhost');
+      define('DB_NAME', 'vercors');
+      define('DB_USER', 'root');
+      define('DB_PWD', '');
+      define('PREFIXE', 'vercors_');
+      
+      // Si le nom de domaine ne pointe pas vers le dossier public, indiquer le chemin entre le nom de domaine et le dossier public.
+      // exemple: /mon-site/public/
+      define('HOME_URL', '/');
+      
+      // Ne pas toucher :
+      
+      define('DB_INITIALIZED', TRUE);
