@@ -3,15 +3,13 @@
 class Reservation {
     private $id;
     private $userId;
-    private $festivalId;
-    private $quantity;
+    private $numPlaces;
+    private $isDiscounted;
     private $createdAt;
 
-    public function __construct($id, $userId, $festivalId, $quantity, $createdAt) {
+    public function __construct($id, $userId, $numPlaces, $isDiscounted, $createdAt) {
         $this->id = $id;
         $this->userId = $userId;
-        $this->festivalId = $festivalId;
-        $this->quantity = $quantity;
         $this->createdAt = $createdAt;
     }
 
@@ -22,14 +20,6 @@ class Reservation {
 
     public function getUserId() {
         return $this->userId;
-    }
-
-    public function getFestivalId() {
-        return $this->festivalId;
-    }
-
-    public function getQuantity() {
-        return $this->quantity;
     }
 
     public function getCreatedAt() {
