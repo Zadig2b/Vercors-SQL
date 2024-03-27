@@ -23,6 +23,12 @@ class Database {
 
         return $this->db;
     }
+
+    public function getDB(): PDO
+    {
+      return $this->db;
+    }
+  
 }
 
 ?>
