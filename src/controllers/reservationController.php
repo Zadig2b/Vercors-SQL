@@ -1,124 +1,56 @@
 <?php
 
-include_once 'Database.php';
+include '../models/Reservation.php';
+include '../Repositories/ReservationRepository.php';
 
-class ReservationController {
-    private $db;
+class Traitement {
+    public function traiterDonnees($donnees) {
+        //  ici, faire le traitement des données avant de les enregistrer
 
-    public function __construct() {
-        $this->db = new Database();
+        //récupération et nettoyage de chaque champ de "Réservation"
+        $nombrePlaces = $_POST['nombrePlaces'];
+        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarif réduit' : 'plein tarif';
+        $passSelection = $_POST['passSelection'];
+        $prix = $_POST['totalPrice2'] . "€";
+        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
+
+
+        //récupération et nettoyage de chaque champ de "Options"
+        $options = isset($_POST['options']) ? $_POST['options'] : [];
+
+$emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
+$emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';
+$enfants = isset($options['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
+$nombreCasquesEnfants = isset($options['nombreCasquesEnfants']) && !empty($options['nombreCasquesEnfants'])
+    ? htmlspecialchars($options['nombreCasquesEnfants']) . " Casque(s)"
+    : '';
+
+$NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLugesEte'])
+    ? htmlspecialchars($options['NombreLugesEte']) . " luge(s)"
+    : '';
+
+
+        //récupération et nettoyage de chaque champ de "Coordonnées"
+        $nom = htmlspecialchars($donnees['nom']);
+        $prenom = htmlspecialchars($donnees['prenom']);
+        $email = htmlspecialchars($donnees['email']);
+        $telephone = htmlspecialchars($donnees['telephone']);
+        $adressePostale = htmlspecialchars($donnees['adressePostale']);
+
+
+
+
+        $reservation = new Reservation();
+        $reservation->enregistrerReservation(
+            $nom, $prenom, $email, $telephone, $adressePostale, 
+            $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
+            $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
+        );
+        
+        exit; 
     }
-
-    // Action to handle creating a new reservation
-    public function createReservation($userId, $numberOfPlaces, $isDiscounted, $totalPrice) {
-        try {
-            $conn = $this->db->getConnection();
-
-            // Prepare SQL statement
-            $query = "INSERT INTO vercors_reservation (number_of_places, is_discounted, total_price, Id_User) VALUES (?, ?, ?, ?)";
-            $stmt = $conn->prepare($query);
-
-            // Bind parameters
-            $stmt->bindParam(1, $numberOfPlaces);
-            $stmt->bindParam(2, $isDiscounted);
-            $stmt->bindParam(3, $totalPrice);
-            $stmt->bindParam(4, $userId);
-
-            // Execute SQL statement
-            $stmt->execute();
-
-            // Close connection
-            $conn = null;
-
-            return true; // Return true if successful
-        } catch(PDOException $exception) {
-            echo "Error: " . $exception->getMessage();
-            return false; // Return false if unsuccessful
-        }
-    }
-
-    // Action to handle retrieving a reservation by ID
-    public function getReservation($reservationId) {
-        try {
-            $conn = $this->db->getConnection();
-
-            // Prepare SQL statement
-            $query = "SELECT * FROM vercors_reservation WHERE Id_reservation = ?";
-            $stmt = $conn->prepare($query);
-
-            // Bind parameter
-            $stmt->bindParam(1, $reservationId);
-
-            // Execute SQL statement
-            $stmt->execute();
-
-            // Fetch result
-            $reservation = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Close connection
-            $conn = null;
-
-            return $reservation; // Return the reservation
-        } catch(PDOException $exception) {
-            echo "Error: " . $exception->getMessage();
-            return null; // Return null if unsuccessful
-        }
-    }
-
-    // Action to handle updating a reservation
-    public function updateReservation($reservationId, $numberOfPlaces, $isDiscounted, $totalPrice) {
-        try {
-            $conn = $this->db->getConnection();
-
-            // Prepare SQL statement
-            $query = "UPDATE vercors_reservation SET number_of_places = ?, is_discounted = ?, total_price = ? WHERE Id_reservation = ?";
-            $stmt = $conn->prepare($query);
-
-            // Bind parameters
-            $stmt->bindParam(1, $numberOfPlaces);
-            $stmt->bindParam(2, $isDiscounted);
-            $stmt->bindParam(3, $totalPrice);
-            $stmt->bindParam(4, $reservationId);
-
-            // Execute SQL statement
-            $stmt->execute();
-
-            // Close connection
-            $conn = null;
-
-            return true; // Return true if successful
-        } catch(PDOException $exception) {
-            echo "Error: " . $exception->getMessage();
-            return false; // Return false if unsuccessful
-        }
-    }
-
-    // Action to handle deleting a reservation
-    public function deleteReservation($reservationId) {
-        try {
-            $conn = $this->db->getConnection();
-
-            // Prepare SQL statement
-            $query = "DELETE FROM vercors_reservation WHERE Id_reservation = ?";
-            $stmt = $conn->prepare($query);
-
-            // Bind parameter
-            $stmt->bindParam(1, $reservationId);
-
-            // Execute SQL statement
-            $stmt->execute();
-
-            // Close connection
-            $conn = null;
-
-            return true; // Return true if successful
-        } catch(PDOException $exception) {
-            echo "Error: " . $exception->getMessage();
-            return false; // Return false if unsuccessful
-        }
-    }
-    
-    // Additional actions as needed
 }
 
-?>
+// Instancier la classe et appeler la méthode pour traiter les données
+$traitement = new Traitement();
+$traitement->traiterDonnees($_POST);
