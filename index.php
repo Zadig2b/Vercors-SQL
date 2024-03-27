@@ -38,8 +38,6 @@ echo $result;
 <body>
   <form action="traitement.php" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
-  <p id="totalPrice">Prix Total : </p>
-
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
@@ -89,6 +87,7 @@ echo $result;
 
       <p class="bouton" onclick="suivant('options')">Suivant</p>
     </fieldset>
+    <p id="totalPrice">Prix Total : </p>
 
     <!------------------------------------------- FIN DE LA SECTION RESERVATION  ------------------------------------------------>
 
