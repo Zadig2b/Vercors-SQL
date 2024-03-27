@@ -80,7 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let pass3jours = document.getElementById('pass3jours');
     let nombrePlacesInput = document.getElementById('NombrePlaces');
     let totalPriceElement = document.getElementById('totalPrice');
-
+    let NombrePlaces = document.getElementById('NombrePlaces');
+    NombrePlaces.addEventListener('change', function () {
+        updatePrixTotal();
+    }
+    );
     tarifReduitCheckbox.addEventListener('change', updatePrices);
 
     [pass1jour, pass2jours, pass3jours].forEach(function (passCheckbox) {

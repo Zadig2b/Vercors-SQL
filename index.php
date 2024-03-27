@@ -1,9 +1,12 @@
 <?php
+
+require_once './src/autoload.php';
+
 session_start();
 
 if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
   // abort
-  header('location:tableau-de-bord.php');
+  header('location:./src/views/admin.php');
   die;
 }
 
@@ -12,8 +15,19 @@ if (isset($_GET['erreur'])) {
   $code_erreur = (int) $_GET['erreur'];
 }
 
-
 include "src/views/header.php";
+
+// Include the Database class
+require_once 'src/Models/Database.php';
+
+// Create an instance of the Database class
+$database = new src\Models\Database();
+
+// Call the initialisationBDD() method
+$result = $database->initialisationBDD();
+
+// Output the result
+echo $result;
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +39,8 @@ include "src/views/header.php";
   <link rel="stylesheet" href="./public/assets/style.css">
 </head>
 <body>
-<p id="totalPrice">Prix Total : </p>
-
   <form action="Reservation.php" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
-
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
@@ -79,6 +90,7 @@ include "src/views/header.php";
 
       <p class="bouton" onclick="suivant('options')">Suivant</p>
     </fieldset>
+    <p id="totalPrice">Prix Total : </p>
 
     <!------------------------------------------- FIN DE LA SECTION RESERVATION  ------------------------------------------------>
 
