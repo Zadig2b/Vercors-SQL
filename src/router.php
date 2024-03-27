@@ -1,10 +1,8 @@
 <?php
 
-use src\Controllers\FilmController;
-use src\Controllers\HomeController;
+use src\controllers\HomeController;
 
 $HomeController = new HomeController;
-$FilmController = new FilmController;
 
 
 $route = $_SERVER['REDIRECT_URL'];
