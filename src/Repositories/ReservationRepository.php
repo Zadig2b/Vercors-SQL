@@ -15,16 +15,28 @@ class ReservationRepositiory {
   
     }
 
+    
     public function getAllReservations() {
         $sql = $this->concatenationRequest("");
-
-    return $this->db->getConnection($sql);
+   
+    return $sql;
     }
 
-    public function createReservation(){
-        $sql= "INSERT INTO " .PREFIX . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation"
-// finish filling out values 
-    }
+    public function createReservation(Reservation $reservation) {
+        $sql= "INSERT INTO " .PREFIX . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
+
+        $statement = $this->db->$sql;
+
+        $return = $statement->execute([
+            ':Id_reservation' => $reservation->getId(),
+            ':number_of_places' => $reservation->getNumPlaces(),
+            ':is_discounted' => $reservation->getIsDiscounted(),
+            ':total_price' => $reservation->getTotalPrice(),
+            ':Id_User' => $reservation->getUserId(),
+        ]);
+
+        return $return;        
+}
 
     private function concatenationRequest(string $request): string
   {

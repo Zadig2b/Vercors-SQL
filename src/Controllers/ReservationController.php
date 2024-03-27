@@ -1,5 +1,7 @@
 <?php
-require_once './reservation.php';
+
+include '../models/Reservation.php';
+include '../Repositories/ReservationRepository.php';
 
 class Traitement {
     public function traiterDonnees($donnees) {
@@ -52,5 +54,3 @@ $NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLu
 // Instancier la classe et appeler la méthode pour traiter les données
 $traitement = new Traitement();
 $traitement->traiterDonnees($_POST);
-
-?>

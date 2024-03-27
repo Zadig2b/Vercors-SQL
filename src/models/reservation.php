@@ -2,20 +2,19 @@
 
 class Reservation {
     private $id;
-    private $userId;
     private $numPlaces;
     private $isDiscounted;
-    private $createdAt;
+    private $totalPrice;
+    private $userId;
 
-    public function __construct($id, $userId, $numPlaces, $isDiscounted, $createdAt) {
+    public function __construct($id, $numPlaces, $isDiscounted,$totalPrice, $userId) {
         $this->id = $id;
-        $this->userId = $userId;
         $this->numPlaces = $numPlaces;
         $this->isDiscounted = $isDiscounted;
-        $this->createdAt = $createdAt;
+        $this->totalPrice = $totalPrice;
+        $this->userId = $userId;
     }
 
-    // Méthodes pour interagir avec la base de données...
 
     /**
      * Get the value of id
@@ -31,24 +30,6 @@ class Reservation {
     public function setId($id): self
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of userId
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * Set the value of userId
-     */
-    public function setUserId($userId): self
-    {
-        $this->userId = $userId;
 
         return $this;
     }
@@ -90,22 +71,38 @@ class Reservation {
     }
 
     /**
-     * Get the value of createdAt
+     * Get the value of totalPrice
      */
-    public function getCreatedAt()
+    public function getTotalPrice()
     {
-        return $this->createdAt;
+        return $this->totalPrice;
     }
 
     /**
-     * Set the value of createdAt
+     * Set the value of totalPrice
      */
-    public function setCreatedAt($createdAt): self
+    public function setTotalPrice($totalPrice): self
     {
-        $this->createdAt = $createdAt;
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userId
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set the value of userId
+     */
+    public function setUserId($userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }
 }
-
-?>
