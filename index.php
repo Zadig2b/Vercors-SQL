@@ -39,7 +39,7 @@ echo $result;
   <link rel="stylesheet" href="./public/assets/style.css">
 </head>
 <body>
-  <form action="traitement.php" id="inscription" method="POST">
+  <form action="Reservation.php" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
     <fieldset id="reservation" class="active">
       <legend>Réservation</legend>
