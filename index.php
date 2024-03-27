@@ -1,4 +1,7 @@
 <?php
+
+require_once './src/autoload.php';
+
 session_start();
 
 if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {

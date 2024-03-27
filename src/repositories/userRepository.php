@@ -4,6 +4,8 @@ namespace src\Repositories;
 
 use src\Models\User;
 use PDO;
+use PDOException;
+
 
 class UserRepository {
     private $db;
@@ -24,6 +26,32 @@ class UserRepository {
         $stmt = $this->db->prepare($query);
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function validateCredentials($email, $password)
+    {
+        try {
+            $query = "SELECT * FROM vercors_user WHERE email = :email";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute(['email' => $email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($password, $user['password'])) {
+                return new User(
+                    $user['name'],
+                    $user['surname'],
+                    $user['phone'],
+                    $user['address'],
+                    $user['email'],
+                    $user['password'],
+                    $user['role'],
+                    $user['RGPD']
+                );
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        return null;
     }
 }
 

@@ -40,7 +40,7 @@ switch ($url) {
         <a href="deconnexion.php">Déconnexion</a>
       <?php } else { ?>
         <a href="./../../index.php">Réservation</a>
-        <a href="./src/views/admin.php">Admin</a>
+        <a href="./src/views/admin.php">Connexion</a>
         <a href="./src/views/user.php">Inscription</a>
       <?php } ?>
     </div>
