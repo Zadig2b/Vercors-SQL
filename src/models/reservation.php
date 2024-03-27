@@ -2,31 +2,107 @@
 
 class Reservation {
     private $id;
-    private $userId;
     private $numPlaces;
     private $isDiscounted;
-    private $createdAt;
+    private $totalPrice;
+    private $userId;
 
-    public function __construct($id, $userId, $numPlaces, $isDiscounted, $createdAt) {
+    public function __construct($id, $numPlaces, $isDiscounted,$totalPrice, $userId) {
         $this->id = $id;
+        $this->numPlaces = $numPlaces;
+        $this->isDiscounted = $isDiscounted;
+        $this->totalPrice = $totalPrice;
         $this->userId = $userId;
-        $this->createdAt = $createdAt;
     }
 
-    // Getters
-    public function getId() {
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getUserId() {
+    /**
+     * Set the value of id
+     */
+    public function setId($id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of numPlaces
+     */
+    public function getNumPlaces()
+    {
+        return $this->numPlaces;
+    }
+
+    /**
+     * Set the value of numPlaces
+     */
+    public function setNumPlaces($numPlaces): self
+    {
+        $this->numPlaces = $numPlaces;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isDiscounted
+     */
+    public function getIsDiscounted()
+    {
+        return $this->isDiscounted;
+    }
+
+    /**
+     * Set the value of isDiscounted
+     */
+    public function setIsDiscounted($isDiscounted): self
+    {
+        $this->isDiscounted = $isDiscounted;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalPrice
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * Set the value of totalPrice
+     */
+    public function setTotalPrice($totalPrice): self
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userId
+     */
+    public function getUserId()
+    {
         return $this->userId;
     }
 
-    public function getCreatedAt() {
-        return $this->createdAt;
+    /**
+     * Set the value of userId
+     */
+    public function setUserId($userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
     }
-
-    // Méthodes pour interagir avec la base de données...
 }
-
-?>

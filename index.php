@@ -27,7 +27,7 @@ include "src/views/header.php";
 <body>
 <p id="totalPrice">Prix Total : </p>
 
-  <form action="traitement.php" id="inscription" method="POST">
+  <form action="Reservation.php" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
 
     <fieldset id="reservation" class="active">
