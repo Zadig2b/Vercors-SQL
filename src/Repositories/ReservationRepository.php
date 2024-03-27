@@ -1,11 +1,13 @@
 <?php
 
-// namespace src\Repositories;
+namespace src\Repositories;
 
-include '../models/Reservation.php';
-include '../models/Database.php';
+use PDO;
+use PDOException;
+use src\models\Reservation;
+use src\models\Database;
 
-class ReservationRepositiory {
+class ReservationRepository {
     private $db;
 
     public function __construct()

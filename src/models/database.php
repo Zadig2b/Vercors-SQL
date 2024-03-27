@@ -1,6 +1,10 @@
 <?php
 
-include_once 'config.php';
+
+namespace src\models;
+
+use PDO;
+use PDOException;
 
 class Database {
     private $config;
