@@ -11,7 +11,8 @@ class ReservationRepositiory {
     public function __construct()
     {
        
-      $this->db = new Database();
+     $database = new Database;
+     $this->db = $database->getDB();
   
     }
 
@@ -25,7 +26,7 @@ class ReservationRepositiory {
     public function createReservation(Reservation $reservation) {
         $sql= "INSERT INTO " .PREFIX . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
 
-        $statement = $this->db->$sql;
+        $statement = $this->db;
 
         $return = $statement->execute([
             ':Id_reservation' => $reservation->getId(),
