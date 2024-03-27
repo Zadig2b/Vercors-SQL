@@ -29,7 +29,7 @@ switch ($url) {
   <?php } else {?>
     <link rel="stylesheet" href="../../public/assets/form.css">
   <?php } ?>
-  <script src="assets/script.js" defer></script>
+  <script src="./../../public/assets/script2.js" defer></script>
 </head>
 <body>
 
@@ -39,8 +39,9 @@ switch ($url) {
       <?php if (isset($_SESSION['connecté'])) { ?>
         <a href="deconnexion.php">Déconnexion</a>
       <?php } else { ?>
-        <a href="index.php">Réservation</a>
-        <a href="admin.php">Admin</a>
+        <a href="./../../index.php">Réservation</a>
+        <a href="./src/views/admin.php">Connexion</a>
+        <a href="./user.php">Inscription</a>
       <?php } ?>
     </div>
   </div>

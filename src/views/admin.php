@@ -7,8 +7,7 @@ if (!isset($_SESSION['connecté']) || empty($_SESSION['user'])) {
   exit;
 }
 
-// Lecture du fichier CSV et affichage des données
-include "includes/header.php";
+include "header.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@ include "includes/header.php";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liste des réservations - Page Admin</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./../../public/assets/style.css">
 </head>
 <body>
   <h1>Liste des réservations</h1>
@@ -36,20 +35,6 @@ include "includes/header.php";
       <!-- Ajoutez d'autres en-têtes de colonnes si nécessaire -->
     </tr>
     <?php
-    // Lecture du fichier CSV
-    $file = 'database.csv';
-    if (($handle = fopen($file, 'r')) !== false) {
-      while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-        echo '<tr>';
-        foreach ($data as $value) {
-          echo '<td>' . htmlspecialchars($value) . '</td>';
-        }
-        echo '</tr>';
-      }
-      fclose($handle);
-    } else {
-      echo '<tr><td colspan="3">Aucune réservation trouvée.</td></tr>';
-    }
     ?>
   </table>
 </body>
