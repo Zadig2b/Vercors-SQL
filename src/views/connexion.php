@@ -1,5 +1,6 @@
 <?php
-require_once 'header.php'; 
+include 'includes/header.php';
+// require_once '../../config.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,7 +15,7 @@ require_once 'header.php';
   <?php if (isset($error)) { ?>
     <p style="color: red;"><?php echo $error; ?></p>
   <?php } ?>
-  <form action="index.php?action=login" method="post">
+  <form action="<?php echo HOME_URL; ?>connexion" method="post">
     <label for="email">Adresse Email :</label>
     <input type="email" name="email" id="email" required>
     <label for="password">Mot de passe :</label>
