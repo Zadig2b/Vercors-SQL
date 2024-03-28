@@ -19,7 +19,7 @@ switch ($url) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vercors Music Festival</title>
+  <title>Activité 4 - Formulaire inscription</title>
   <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/main.css">
   <?php if ($url == 'tableau-de-bord') { ?>
     <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/dashboard.css">

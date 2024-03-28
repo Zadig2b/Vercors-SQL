@@ -8,7 +8,7 @@ use src\Services\Reponse;
 
 class AuthController
 {
-use Reponse;
+    use Reponse;
     public function login()
     {
         // session_start();

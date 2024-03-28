@@ -1,11 +1,10 @@
 <?php
 
-// Include necessary files
 require_once 'src/Models/User.php';
 require_once 'src/Repositories/UserRepository.php';
-require_once 'src/Models/Database.php'; // Assuming you have a Database class for database connection
+require_once 'src/Models/Database.php'; 
 
-// Initialize database connection
+//Initialise la connexion à la base de données
 $database = new \src\Models\Database();
 $db = $database->getDB();
 
@@ -34,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userId) {
         echo "User account created successfully with ID: $userId";
         // Redirect to login page or user dashboard
-        // header("Location: login.php");
+        // header("Location: dashboard.php");
         // exit();
     } else {
         echo "Failed to create user account";
