@@ -34,6 +34,7 @@ class AuthController
             } else {
                 // Incorrect email/password
                 $error = "Adresse email ou mot de passe incorrect";
+                $this->render('Connexion', ['error' => $error]);
             }
         }
 

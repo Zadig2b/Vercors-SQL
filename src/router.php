@@ -60,3 +60,4 @@ switch ($route) {
         $homeController->page404();
         break;
 }
+
