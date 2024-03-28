@@ -38,7 +38,7 @@ switch ($route) {
               die;
           } else {
               if ($method === 'POST') {
-                  $authController->login();
+                  $authController->registration();
               } else {
                   $homeController->registration();
               }

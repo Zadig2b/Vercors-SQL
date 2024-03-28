@@ -10,7 +10,7 @@ require_once 'includes/header.php';
 </head>
 <body>
     <h1>Registration</h1>
-    <form action="./../../register.php" method="post">
+    <form action="<?php echo HOME_URL; ?>registration" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
         <label for="surname">Surname:</label>
