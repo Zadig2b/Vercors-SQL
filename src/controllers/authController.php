@@ -56,7 +56,7 @@ class AuthController
             $RGPD = isset($_POST['RGPD']) ? 1 : 0; // Convert checkbox value to boolean
 
             // Create User object
-            $user = new \src\Models\User($name, $surname, $phone, $address, $email, $password, $role, $RGPD);
+            $user = new \src\models\User($name, $surname, $phone, $address, $email, $password, $role, $RGPD);
 
             // Initialize Database
             $database = new Database();

@@ -40,7 +40,7 @@ switch ($route) {
               if ($method === 'POST') {
                   $authController->registration();
               } else {
-                  // $homeController->registration();
+                  $homeController->registration();
               }
           }
           break;
