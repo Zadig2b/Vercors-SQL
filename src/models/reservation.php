@@ -8,13 +8,6 @@ class Reservation {
     private $totalPrice;
     private $userId;
 
-    public function __construct($id, $numPlaces, $isDiscounted,$totalPrice, $userId) {
-        $this->id = $id;
-        $this->numPlaces = $numPlaces;
-        $this->isDiscounted = $isDiscounted;
-        $this->totalPrice = $totalPrice;
-        $this->userId = $userId;
-    }
 
 
     /**
