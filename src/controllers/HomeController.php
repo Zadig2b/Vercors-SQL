@@ -15,9 +15,34 @@ class HomeController
       $erreur = htmlspecialchars($_GET['erreur']);
     } else {
       $erreur = '';
+
     }
 
     $this->render("Accueil", ["erreur"=> $erreur]);
+  }
+
+  public function connexion(): void
+  {
+    if (isset($_GET['erreur'])) {
+      $erreur = htmlspecialchars($_GET['erreur']);
+    } else {
+      $erreur = '';
+
+    }
+
+    $this->render("Connexion", ["erreur"=> $erreur]);
+  }
+
+  public function registration(): void
+  {
+    if (isset($_GET['erreur'])) {
+      $erreur = htmlspecialchars($_GET['erreur']);
+    } else {
+      $erreur = '';
+
+    }
+
+    $this->render("Registration", ["erreur"=> $erreur]);
   }
 
   public function auth(string $password): void
