@@ -11,7 +11,7 @@ class AuthController
     use Reponse;
     public function login()
     {
-        session_start();
+        // session_start();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password']) && isset($_POST['email'])) {
             $password = $_POST['password'];
