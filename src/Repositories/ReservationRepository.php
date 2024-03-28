@@ -1,9 +1,9 @@
 <?php
 
-// namespace src\Repositories;
+namespace src\Repositories;
 
-include '../models/Reservation.php';
-include '../models/Database.php';
+use Reservation;
+use src\models\Database;
 
 class ReservationRepositiory {
     private $db;
@@ -19,14 +19,20 @@ class ReservationRepositiory {
     
     public function getAllReservations() {
         $sql = $this->concatenationRequest("");
+
+        $req = $this->db->query($sql);
+
+        $data = $req->fetchAll(PDO::FETCH_CLASS, Reservation::class);
+
+        return $data;
    
-    return $sql;
+    
     }
 
     public function createReservation(Reservation $reservation) {
-        $sql= "INSERT INTO " .PREFIX . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
+        $sql= "INSERT INTO " .PREFIXE . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
 
-        $statement = $this->db;
+        $statement = $this->db->prepare($sql);
 
         $return = $statement->execute([
             ':Id_reservation' => $reservation->getId(),
