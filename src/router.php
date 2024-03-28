@@ -32,6 +32,19 @@ switch ($route) {
         }
         break;
 
+        case HOME_URL . 'registration':
+          if (isset($_SESSION['connected'])) {
+              header('location: /dashboard');
+              die;
+          } else {
+              if ($method === 'POST') {
+                  $authController->registration();
+              } else {
+                  $homeController->registration();
+              }
+          }
+          break;
+
     case HOME_URL . 'deconnexion':
         // Add logout logic in AuthController
         // $authController->logout();

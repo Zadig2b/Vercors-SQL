@@ -6,8 +6,8 @@
     <title>User Registration</title>
 </head>
 <body>
-    <h1>User Registration</h1>
-    <form action="./../../register.php" method="post">
+    <h1>Registration</h1>
+    <form action="<?php echo HOME_URL; ?>registration" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
         <label for="surname">Surname:</label>
