@@ -5,6 +5,10 @@ namespace src\Repositories;
 use src\models\Reservation;
 use src\models\Database;
 use PDO;
+<<<<<<< HEAD
+use PDOException;
+=======
+>>>>>>> ccf7a092ba912cb8f2aefea443bad01a3f26542d
 
 class ReservationRepositiory {
     private $db;
@@ -18,23 +22,11 @@ class ReservationRepositiory {
     }
 
     
-    public function getAllReservations() {
-        $sql = $this->concatenationRequest("");
-
-        $req = $this->db->query($sql);
-
-        $data = $req->fetchAll(PDO::FETCH_CLASS, Reservation::class);
-
-        return $data;
-   
-    
-    }
-
     public function createReservation(Reservation $reservation) {
         $sql= "INSERT INTO " .PREFIXE . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
-
+        
         $statement = $this->db->prepare($sql);
-
+        
         $return = $statement->execute([
             ':Id_reservation' => $reservation->getId(),
             ':number_of_places' => $reservation->getNumPlaces(),
@@ -42,9 +34,22 @@ class ReservationRepositiory {
             ':total_price' => $reservation->getTotalPrice(),
             ':Id_User' => $reservation->getUserId(),
         ]);
-
+        
         return $return;        
-}
+    }
+    
+    public function getAllReservations() {
+    
+    $sql = $this->concatenationRequest("");
+    
+    $req = $this->db->query($sql);
+    
+    $data = $req->fetchAll(PDO::FETCH_CLASS, Reservation::class);
+
+        return $data;
+   
+    
+    }
 
     private function concatenationRequest(string $request): string
   {
