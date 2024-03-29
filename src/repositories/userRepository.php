@@ -29,30 +29,25 @@ class UserRepository {
     }
 
     public function validateCredentials($email, $password)
-    {
-        try {
-            $query = "SELECT * FROM vercors_user WHERE email = :email";
-            $stmt = $this->db->prepare($query);
-            $stmt->execute(['email' => $email]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($user && password_verify($password, $user['password'])) {
-                return new User(
-                    $user['name'],
-                    $user['surname'],
-                    $user['phone'],
-                    $user['address'],
-                    $user['email'],
-                    $user['password'],
-                    $user['role'],
-                    $user['RGPD']
-                );
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+{
+    try {
+        $query = "SELECT password FROM vercors_user WHERE email = :email"; // Fetch only the password column
+        $stmt = $this->db->prepare($query);
+        $stmt->execute(['email' => $email]);
+        $hashedPassword = $stmt->fetchColumn(); // Fetch the hashed password from the database
+        echo "SQL Query: $query";
+        echo "Hashed Password from DB: $hashedPassword";
+        // Verify the password
+        if ($hashedPassword && password_verify($password, $hashedPassword)) {
+            // Password correct
+            return true;
         }
-        return null;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
+    return false; // Incorrect email/password
+}
+
 }
 
 ?>
