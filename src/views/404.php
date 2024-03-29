@@ -1,7 +1,7 @@
 <?php
 
 // Inclure le header
-include 'includes/header.php';
+// include 'includes/header.php';
 
 ?>
 <div class="main">

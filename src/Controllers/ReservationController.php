@@ -3,7 +3,7 @@ namespace src\controllers;
 
 use src\models\Database;
 use src\models\Reservation;
-use src\Repositories\ReservationRepositiory;
+use src\Repositories\ReservationRepository;
 use src\Services\Reponse;
 
 class ReservationController {
@@ -26,19 +26,21 @@ class ReservationController {
             $reservation->setNumPlaces($numPlaces);
             $reservation->setIsDiscounted($isDiscounted);
             $reservation->setTotalPrice($totalPrice);
+        //   print_r($reservation);
             // $reservation->setUserId($userId);
 
 
              // Initialize Database
              $database = new Database();
              $db = $database->getDB();
-             $reservationRepository = new ReservationRepositiory($db);
-             $reservationRepository->createReservation($reservation);
-            // Call the repository method to save the reservation
-            $success = $this->reservationRepository->createReservation($reservation);
+            
+             // Call the repository method to save the reservation
+             $reservationRepository = new ReservationRepository($db);
+
+            $newreservation = $reservationRepository->createReservation($reservation);
 
             // Check if reservation saved successfully
-            if ($success) {
+            if ($newreservation) {
                 echo "Reservation saved successfully";
                 // Redirect or perform other actions as needed
             } else {
@@ -46,7 +48,18 @@ class ReservationController {
                 // Handle error scenario
             }
         }
+
+        $this->render('reservationTemplate');
     }
+
+    public function showReservation() {
+        // $showReservationRepo = new ReservationRepository();
+        // $newReservation = $showReservationRepo->getAllReservations();
+        $this->render('reservationTemplate');
+        
+    }
+
+
     public function traiterDonnees($donnees) {
         //  ici, faire le traitement des données avant de les enregistrer
 
@@ -90,7 +103,19 @@ $NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLu
         //     $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
         // );
         
-        exit; 
     }
-}
+        public function quit()
+        {
+          session_destroy();
+          header('location: '.HOME_URL);
+          die();
+        }
+      
+        public function page404(): void
+        {    
+          header("HTTP/1.1 404 Not Found");
+          $this->render('404');
+        }
+    }
+
 

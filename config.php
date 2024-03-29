@@ -2,9 +2,9 @@
       // lors de la mise en open source, remplacer les infos concernant la base de données.
       
       define('DB_HOST', 'localhost');
-      define('DB_NAME', 'vercors');
-      define('DB_USER', 'root');
-      define('DB_PWD', '');
+      define('DB_NAME', 'briefmvc');
+      define('DB_USER', 'BriefMVC');
+      define('DB_PWD', 'BriefMVC');
       define('PREFIXE', 'vercors_');
       
       // Si le nom de domaine ne pointe pas vers le dossier public, indiquer le chemin entre le nom de domaine et le dossier public.
