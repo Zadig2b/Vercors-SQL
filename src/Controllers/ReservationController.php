@@ -53,9 +53,9 @@ class ReservationController {
     }
 
     public function showReservation() {
-        // $showReservationRepo = new ReservationRepository();
-        // $newReservation = $showReservationRepo->getAllReservations();
-        $this->render('reservationTemplate');
+        $showReservationRepo = new ReservationRepository();
+        $newReservation = $showReservationRepo->getAllReservations();
+        $this->render('reservationTemplate', $newReservation);
         
     }
 

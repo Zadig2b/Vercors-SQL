@@ -3,22 +3,23 @@
 namespace src\Repositories;
 
 use src\models\Reservation;
-
+use src\models\Database;
 use PDO;
-
+use PDOException;
 
 class ReservationRepository {
     private $db;
 
-    public function __construct(PDO $db)
+    public function __construct()
     {
-     $this->db = $db;
+       
+     $database = new Database;
+     $this->db = $database->getDB();
   
     }
 
     
     public function createReservation(Reservation $reservation) {
-        print_r($reservation);
         $sql= "INSERT INTO " .PREFIXE . "reservation (Id_reservation, number_of_places, is_discounted, total_price, Id_User) VALUES (:Id_reservation, :number_of_places, :is_discounted, :total_price, :Id_User)";
         
         $statement = $this->db->prepare($sql);
@@ -28,7 +29,7 @@ class ReservationRepository {
             ':number_of_places' => $reservation->getNumPlaces(),
             ':is_discounted' => $reservation->getIsDiscounted(),
             ':total_price' => $reservation->getTotalPrice(),
-            ':Id_User' => '1',
+            ':Id_User' => $reservation->getUserId(),
         ]);
         
         return $return;        
