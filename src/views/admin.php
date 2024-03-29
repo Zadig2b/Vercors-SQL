@@ -1,14 +1,4 @@
-<?php
-session_start();
 
-// Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
-if (!isset($_SESSION['connecté']) || empty($_SESSION['user'])) {
-  header('location:connexion.php');
-  exit;
-}
-
-include "header.php";
-?>
 
 <!DOCTYPE html>
 <html lang="fr">

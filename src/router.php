@@ -54,6 +54,7 @@ switch ($route) {
 
     case HOME_URL . 'dashboard':
         // Add dashboard logic here
+        $homeController->dashboard();
         break;
     case HOME_URL . 'reservation':
         if ($method === 'POST') {

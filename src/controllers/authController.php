@@ -26,7 +26,8 @@ class AuthController
             $_SESSION['connected'] = true;
             $_SESSION['user'] = $email; // Store user email in session
             // Redirect the user to the dashboard page
-            header('Location: dashboard.php');
+            header("Location: /dashboard");
+            // $this->render('dashboard');
             exit;
         } else {
             // Incorrect email/password
@@ -39,12 +40,13 @@ class AuthController
     $this->render('Connexion');
 }
 
-    public function logout(){
-        session_start();
-        session_destroy();
-        header('Location: index.php');
-        exit;
-    }
+public function logout(){
+    session_start();
+    session_destroy();
+    header("Location: " . HOME_URL);
+    exit;
+}
+
 
     public function registration()
     {
