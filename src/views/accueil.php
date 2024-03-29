@@ -36,6 +36,8 @@ echo $result;
   <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/style.css">
 </head>
 <body>
+  <div>
+  <!-- <img src="./assets/img/background-pic.png" alt=""> -->
   <form action="Reservation" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
     <fieldset id="reservation" class="active">
@@ -156,6 +158,7 @@ echo $result;
         <!------------------------------------------- FIN DE LA SECTION COORDONNEES  ------------------------------------------------>
 
   </form>
+  </div>
 </body>
 <script src="./../../assets/js/script.js"></script>
 </html>
