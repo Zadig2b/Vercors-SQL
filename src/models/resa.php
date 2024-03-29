@@ -2,7 +2,7 @@
 
 namespace src\models;
 
-class Reservation {
+class Resa {
     private $id;
     private $numPlaces;
     private $isDiscounted;

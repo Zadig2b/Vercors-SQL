@@ -1,7 +1,3 @@
-<?php
-// session_start(); // Start the session
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,23 +10,7 @@
 <div class="success-message">
     <h2>Thank you for your reservation!</h2>
     <?php
-      // Check if reservation data is available
-      // if (isset($_SESSION['ReservationController'])) {
-      //   $reservationData = $_SESSION['ReservationController'];
-      echo '<ul>';
-        foreach($reservations as $reservation) {
-          echo "<li><p>Reservation Id : ' . $reservation->getId() . '</p></li>
-                <li><p>Number of places : . $reservation->getNumPlaces() "
-
-        }
-        // Display reservation details
-        echo "<p>Name: {$reservationData[0]} {$reservationData[1]}</p>";
-        echo "<p>Email: {$reservationData[2]}</p>";
-        echo "<p>Nombre de places: {$nu[5]}</p>";
-        echo "<p>Prix Total: {$totalPrice[8]}</p>";
-      // } else {
-      //   echo "<p>No reservation data available.</p>";
-      // }
+      
     ?>
   </div>
 </body>
