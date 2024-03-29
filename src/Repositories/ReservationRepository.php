@@ -2,10 +2,13 @@
 
 namespace src\Repositories;
 
-use Reservation;
+use src\models\Reservation;
 use src\models\Database;
 use PDO;
+<<<<<<< HEAD
 use PDOException;
+=======
+>>>>>>> ccf7a092ba912cb8f2aefea443bad01a3f26542d
 
 class ReservationRepositiory {
     private $db;
