@@ -2,8 +2,9 @@
 
 namespace src\Repositories;
 
-use Reservation;
+use src\models\Reservation;
 use src\models\Database;
+use PDO;
 
 class ReservationRepositiory {
     private $db;

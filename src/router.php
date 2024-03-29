@@ -2,9 +2,11 @@
 
 use src\Controllers\AuthController;
 use src\Controllers\HomeController;
+use src\controllers\ReservationController;
 
 $authController = new AuthController();
 $homeController = new HomeController();
+$reservationController = new ReservationController();
 
 $route = $_SERVER['REDIRECT_URL'];
 $method = $_SERVER['REQUEST_METHOD'];
@@ -53,7 +55,10 @@ switch ($route) {
     case HOME_URL . 'dashboard':
         // Add dashboard logic here
         break;
-
+    case HOME_URL . 'Reservation':
+        if ($method === 'POST') {
+            $reservationController->saveReservation();
+        }
     // Add more routes as needed
 
     default:

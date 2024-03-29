@@ -1,5 +1,6 @@
 <?php
-echo 'you found me'; 
+
+namespace src\models;
 
 class Reservation {
     private $id;
