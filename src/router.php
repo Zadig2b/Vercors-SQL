@@ -49,7 +49,7 @@ switch ($route) {
 
     case HOME_URL . 'deconnexion':
         // Add logout logic in AuthController
-        // $authController->logout();
+        $authController->logout();
         break;
 
     case HOME_URL . 'dashboard':

@@ -10,36 +10,40 @@ class AuthController
 {
     use Reponse;
     public function login()
-    {
-        // session_start();
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password']) && isset($_POST['email'])) {
+        $password = $_POST['password'];
+        $email = $_POST['email'];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password']) && isset($_POST['email'])) {
-            $password = $_POST['password'];
-            $email = $_POST['email'];
+        $database = new Database();
+        $db = $database->getDB();
+        $userRepository = new UserRepository($db);
+        echo "Email: $email, Password: $password";
 
-            $database = new Database();
-            $db = $database->getDB();
-            $userRepository = new UserRepository($db);
-
-            // Validate email/password combination
-            $user = $userRepository->validateCredentials($email, $password);
-
-            if ($user) {
-                // Password correct, mark the user as connected
-                $_SESSION['connected'] = true;
-                $_SESSION['user'] = $user->getEmail(); // Store user email in session
-                // Redirect the user to the dashboard page
-                header('Location: dashboard.php');
-                exit;
-            } else {
-                // Incorrect email/password
-                $error = "Adresse email ou mot de passe incorrect";
-                $this->render('Connexion', ['error' => $error]);
-            }
+        // Validate email/password combination
+        if ($userRepository->validateCredentials($email, $password)) {
+            // Password correct, mark the user as connected
+            $_SESSION['connected'] = true;
+            $_SESSION['user'] = $email; // Store user email in session
+            // Redirect the user to the dashboard page
+            header('Location: dashboard.php');
+            exit;
+        } else {
+            // Incorrect email/password
+            $error = "Adresse email ou mot de passe incorrect";
+            $this->render('Connexion', ['error' => $error]);
         }
+    }
 
-        // Load the login view
-        $this->render('Connexion');
+    // Load the login view
+    $this->render('Connexion');
+}
+
+    public function logout(){
+        session_start();
+        session_destroy();
+        header('Location: index.php');
+        exit;
     }
 
     public function registration()
@@ -53,11 +57,13 @@ class AuthController
             $address = $_POST['address'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+
             $role = $_POST['role'];
             $RGPD = isset($_POST['RGPD']) ? 1 : 0; // Convert checkbox value to boolean
 
             // Create User object
-            $user = new \src\models\User($name, $surname, $phone, $address, $email, $password, $role, $RGPD);
+            $user = new \src\models\User($name, $surname, $phone, $address, $email, $hashedPassword, $role, $RGPD);
 
             // Initialize Database
             $database = new Database();
