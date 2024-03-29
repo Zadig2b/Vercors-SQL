@@ -1,9 +1,52 @@
 <?php
+namespace src\controllers;
 
-include '../models/Reservation.php';
-include '../Repositories/ReservationRepository.php';
+use src\models\Database;
+use src\models\Reservation;
+use src\Repositories\ReservationRepositiory;
+use src\Services\Reponse;
 
-class Traitement {
+class ReservationController {
+    private $reservationRepository;
+    use Reponse;
+
+    
+    public function saveReservation() {
+                // Check if form submitted
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve form data
+            $numPlaces = $_POST['nombrePlaces'];
+            $isDiscounted = isset($_POST['tarifReduit']) ? $_POST['tarifReduit'] : false; // Default value if not set
+            $totalPrice = $_POST['totalPrice2'];
+            // $userId = $_POST['userId'];
+             // Assuming this comes from the session or another secure method
+
+            // Create Reservation object
+            $reservation = new Reservation();
+            $reservation->setNumPlaces($numPlaces);
+            $reservation->setIsDiscounted($isDiscounted);
+            $reservation->setTotalPrice($totalPrice);
+            // $reservation->setUserId($userId);
+
+
+             // Initialize Database
+             $database = new Database();
+             $db = $database->getDB();
+             $reservationRepository = new ReservationRepositiory($db);
+             $reservationRepository->createReservation($reservation);
+            // Call the repository method to save the reservation
+            $success = $this->reservationRepository->createReservation($reservation);
+
+            // Check if reservation saved successfully
+            if ($success) {
+                echo "Reservation saved successfully";
+                // Redirect or perform other actions as needed
+            } else {
+                echo "Failed to save reservation";
+                // Handle error scenario
+            }
+        }
+    }
     public function traiterDonnees($donnees) {
         //  ici, faire le traitement des données avant de les enregistrer
 
@@ -40,17 +83,14 @@ $NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLu
 
 
 
-        $reservation = new Reservation();
-        $reservation->enregistrerReservation(
-            $nom, $prenom, $email, $telephone, $adressePostale, 
-            $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
-            $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
-        );
+        // $reservation = new Reservation();
+        // $reservation->enregistrerReservation(
+        //     $nom, $prenom, $email, $telephone, $adressePostale, 
+        //     $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
+        //     $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
+        // );
         
         exit; 
     }
 }
 
-// Instancier la classe et appeler la méthode pour traiter les données
-$traitement = new Traitement();
-$traitement->traiterDonnees($_POST);
