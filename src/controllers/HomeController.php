@@ -45,6 +45,18 @@ class HomeController
     $this->render("Registration", ["erreur"=> $erreur]);
   }
 
+  public function dashboard(): void{
+    if (isset($_GET['erreur'])) {
+      $erreur = htmlspecialchars($_GET['erreur']);
+    } else {
+      $erreur = '';
+
+    }
+
+    $this->render("dashboard", ["erreur"=> $erreur]);
+  }
+  
+
   public function auth(string $password): void
   {
     if ($password === 'admin') {
