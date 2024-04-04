@@ -9,9 +9,7 @@
 <body>
 <div class="success-message">
     <h2>Thank you for your reservation!</h2>
-    <?php
-      
-    ?>
+
   </div>
 </body>
 </html>

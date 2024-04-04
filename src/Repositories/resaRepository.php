@@ -18,8 +18,8 @@ class ResaRepository
     public function createResa(Resa $resa)
     {
         try {
-            $query = "INSERT INTO resa (nombrePlaces, tarifReduit, passSelection, prix, choixJour, emplacementTente, emplacementCamion, enfants, nombreCasquesEnfants, NombreLugesEte)
-                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO resa (nombrePlaces, tarifReduit, passSelection, prix, choixJour, emplacementTente, emplacementCamion, enfants, nombreCasquesEnfants, NombreLugesEte, id_User)
+                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->execute([
                 $resa->getNumPlaces(),
@@ -31,12 +31,13 @@ class ResaRepository
                 $resa->getEmplacementCamion(),
                 $resa->getEnfants(),
                 $resa->getNombreCasquesEnfants(),
-                $resa->getNombreLugesEte()
+                $resa->getNombreLugesEte(),
+                $resa->getUserId()
             ]);
-            return true; // Return true if insertion is successful
+            return true; //Renvoie vrai si l'insertion est réussie
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-            return false; // Return false if insertion fails
+            return false; //Renvoie false si l'insertion échoue
         }
     }
 

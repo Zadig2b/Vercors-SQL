@@ -6,7 +6,16 @@ body {
 
 }
 
+fieldset {
+    /* display: flex;
+    flex-direction: column; */
 
+}
+
+/* section {
+      display: flex;
+    flex-direction: row; 
+} */
 
 /* input[type=checkbox] {
     display: none;

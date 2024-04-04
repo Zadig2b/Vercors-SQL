@@ -15,11 +15,13 @@ class UserRepository {
     }
 
     public function createUser(User $user) {
-        $query = "INSERT INTO vercors_user (name, surname, phone, address, email, password, role, RGPD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$user->getName(), $user->getSurname(), $user->getPhone(), $user->getAddress(), $user->getEmail(), $user->getPassword(), $user->getRole(), $user->getRGPD()]);
-        return $this->db->lastInsertId();
-    }
+    $query = "INSERT INTO vercors_user (name, surname, phone, address, email, password, role, RGPD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute([$user->getName(), $user->getSurname(), $user->getPhone(), $user->getAddress(), $user->getEmail(), $user->getPassword(), $user->getRole(), $user->getRGPD()]);
+    $userId = $this->db->lastInsertId(); //Obtenez l'ID du dernier utilisateur inséréséréséré
+    return $userId; //Renvoyer l'ID utilisateur
+}
+
 
     public function getUserByEmail($email) {
         $query = "SELECT * FROM vercors_user WHERE email = ?";
@@ -31,22 +33,33 @@ class UserRepository {
     public function validateCredentials($email, $password)
 {
     try {
-        $query = "SELECT password FROM vercors_user WHERE email = :email"; // Fetch only the password column
+        $query = "SELECT * FROM vercors_user WHERE email = :email"; // Fetch all columns
         $stmt = $this->db->prepare($query);
         $stmt->execute(['email' => $email]);
-        $hashedPassword = $stmt->fetchColumn(); // Fetch the hashed password from the database
-        echo "SQL Query: $query";
-        echo "Hashed Password from DB: $hashedPassword";
-        // Verify the password
-        if ($hashedPassword && password_verify($password, $hashedPassword)) {
-            // Password correct
-            return true;
+        $user = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch the user data from the database
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Password correct, return the user object
+            $userObject = new User(
+                $user['name'],
+                $user['surname'],
+                $user['phone'],
+                $user['address'],
+                $user['email'],
+                $user['password'],
+                $user['role'],
+                $user['RGPD']
+            );
+            $userObject->setId($user['Id_User']); // Set the ID of the user
+            return $userObject;
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    return false; // Incorrect email/password
+    return null; // Incorrect email/password
 }
+
+
 
 }
 

@@ -14,8 +14,10 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($route) {
     case HOME_URL:
         if (isset($_SESSION['connected'])) {
-            header('location: ' . HOME_URL . 'dashboard');
-            die;
+            // header('location: ' . HOME_URL . 'dashboard');
+            // die;
+            $homeController->index();
+
         } else {
             $homeController->index();
         }

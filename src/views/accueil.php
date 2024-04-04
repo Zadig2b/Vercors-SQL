@@ -58,13 +58,12 @@ echo $result;
 <section id="pass1jourDate">
     <input type="radio" name="choixJour" id="choixJour1" value="01/07">
     <label for="choixJour1">01/07</label>
-
     <input type="radio" name="choixJour" id="choixJour2" value="02/07" >
     <label for="choixJour2">02/07</label>
-
     <input type="radio" name="choixJour" id="choixJour3" value="03/07" >
     <label for="choixJour3">03/07</label>
 </section>
+<br>
 
       <input type="radio" name="passRadio" id="pass2jours" data-price="70">
       <label for="pass2jours">Pass 2 jours : 70€</label>
@@ -78,6 +77,7 @@ echo $result;
         <input type="radio" name="choixJour" id="choixJour23" value="02/07 et 03/07">
         <label for="choixJour23">du 02/07 au 03/07</label>
       </section>
+      <br>
 
       <input type="radio" name="passRadio" id="pass3jours" data-price="100">
       <label for="pass3jours">Pass 3 jours : 100€</label>
@@ -89,7 +89,6 @@ echo $result;
 
       <p class="bouton" onclick="suivant('options')">Suivant</p>
     </fieldset>
-    <p id="totalPrice">Prix Total : </p>
 
     <!------------------------------------------- FIN DE LA SECTION RESERVATION  ------------------------------------------------>
 
@@ -156,6 +155,7 @@ echo $result;
     </fieldset>
 
         <!------------------------------------------- FIN DE LA SECTION COORDONNEES  ------------------------------------------------>
+        <p id="totalPrice">Prix Total : </p>
 
   </form>
   </div>

@@ -18,16 +18,19 @@ class AuthController
         $database = new Database();
         $db = $database->getDB();
         $userRepository = new UserRepository($db);
-        echo "Email: $email, Password: $password";
 
         // Validate email/password combination
-        if ($userRepository->validateCredentials($email, $password)) {
+        $user = $userRepository->validateCredentials($email, $password);
+
+        if ($user) {
             // Password correct, mark the user as connected
             $_SESSION['connected'] = true;
-            $_SESSION['user'] = $email; // Store user email in session
+            $_SESSION['userId'] = $user->getId(); // Store user ID in session
+            
+
+            
             // Redirect the user to the dashboard page
             header("Location: /dashboard");
-            // $this->render('dashboard');
             exit;
         } else {
             // Incorrect email/password
@@ -39,6 +42,8 @@ class AuthController
     // Load the login view
     $this->render('Connexion');
 }
+
+
 
 public function logout(){
     session_start();

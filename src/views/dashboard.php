@@ -27,6 +27,9 @@ include 'includes/header.php';
       <!-- Ajoutez d'autres en-têtes de colonnes si nécessaire -->
     </tr>
     <?php
+                // Debug: Check if user ID is correctly retrieved
+                echo "User ID: " . $_SESSION['userId']; // Output the user ID
+                
     ?>
   </table>
 </body>

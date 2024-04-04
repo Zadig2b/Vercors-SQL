@@ -37,7 +37,11 @@ switch ($url) {
   <div class="logo">Vercors Music Festival</div>
   <div>
     <?php if (isset($_SESSION['connected'])) { ?>
+      <a href="<?php echo HOME_URL; ?>">Réservation</a>
       <a href="<?php echo HOME_URL; ?>deconnexion">Déconnexion</a>
+      <a href="<?php echo HOME_URL; ?>dashboard">Tableau de Bord</a>
+
+
     <?php } else { ?>
       <a href="<?php echo HOME_URL; ?>">Réservation</a>
       <a href="<?php echo HOME_URL; ?>connexion">Connexion</a>
