@@ -64,8 +64,6 @@ switch ($route) {
             echo 'successful reservation';
         } else {
             $reservationController->showReservation();
-            // echo 'Failed reservation';
-
 
         }
     // Add more routes as needed
