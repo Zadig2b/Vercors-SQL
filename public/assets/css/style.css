@@ -2,28 +2,14 @@ body {
     
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-image: url("./assets/img/background-pic.png"); */
+    background-image: url("./../img/bg-color.png");
+    align-items: center;
 
 }
 
-fieldset {
-    /* display: flex;
-    flex-direction: column; */
 
-}
 
-/* section {
-      display: flex;
-    flex-direction: row; 
-} */
 
-/* input[type=checkbox] {
-    display: none;
-}
-
-label {
-    border: 2px solid black;
-} */
 .bouton {
     border: 2px solid black;
     width: fit-content;

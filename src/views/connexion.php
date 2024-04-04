@@ -8,7 +8,7 @@ include 'includes/header.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion Admin</title>
-  <link rel="stylesheet" href="./../../public/assets/style.css">
+  <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/style.css">
 </head>
 <body>
   <h1>Connexion</h1>
