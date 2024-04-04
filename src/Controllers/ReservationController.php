@@ -29,6 +29,7 @@ class ReservationController {
         $enfants = isset($_POST['options']['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
         $nombreCasquesEnfants = isset($_POST['options']['nombreCasquesEnfants']) ? $_POST['options']['nombreCasquesEnfants'] : '';
         $nombreLugesEte = isset($_POST['options']['NombreLugesEte']) ? $_POST['options']['NombreLugesEte'] : '';
+        $userId = $_SESSION['userId'] ?? null;
 
     
             // Create Reservation object
@@ -50,7 +51,7 @@ class ReservationController {
             
             // Call the repository method to save the reservation
             $reservationRepository = new ResaRepository($db);
-            $newReservation = $reservationRepository->createResa($reservation);
+            $newReservation = $reservationRepository->createResa($reservation, $userId);
     
             // Check if reservation saved successfully
             if ($newReservation) {

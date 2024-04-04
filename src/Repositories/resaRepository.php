@@ -15,7 +15,7 @@ class ResaRepository
         $this->db = $db;
     }
 
-    public function createResa(Resa $resa)
+    public function createResa(Resa $resa, $userId)
     {
         try {
             $query = "INSERT INTO resa (nombrePlaces, tarifReduit, passSelection, prix, choixJour, emplacementTente, emplacementCamion, enfants, nombreCasquesEnfants, NombreLugesEte, id_User)
@@ -32,7 +32,7 @@ class ResaRepository
                 $resa->getEnfants(),
                 $resa->getNombreCasquesEnfants(),
                 $resa->getNombreLugesEte(),
-                $resa->getUserId()
+                $userId
             ]);
             return true; //Renvoie vrai si l'insertion est réussie
         } catch (PDOException $e) {
