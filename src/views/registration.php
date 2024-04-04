@@ -23,8 +23,8 @@ require_once 'includes/header.php';
         <input type="email" id="email" name="email" required><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br>
-        <!-- <label for="role">Role:</label>
-        <input type="text" id="role" name="role" ><br> -->
+        <label for="role" hidden=true>Role:</label>
+        <input type="text" id="role" name="role" hidden=true><br>
         <label for="RGPD">RGPD:</label>
         <input type="checkbox" id="RGPD" name="RGPD" required><br>
         <input type="submit" value="Register">

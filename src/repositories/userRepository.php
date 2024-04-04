@@ -47,7 +47,7 @@ class UserRepository {
                 $user['address'],
                 $user['email'],
                 $user['password'],
-                $user['role'],
+                isset($user['role']) ? $user['role'] : 'user', // Ensure role exists or default to 'user'
                 $user['RGPD']
             );
             $userObject->setId($user['Id_User']); // Set the ID of the user
