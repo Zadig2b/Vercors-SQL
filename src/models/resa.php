@@ -37,6 +37,7 @@ class Resa {
 
         return $this;
     }
+    
 
     /**
      * Get the value of numPlaces
@@ -97,15 +98,15 @@ class Resa {
      */
     public function getUserId()
     {
-        return $this->userId;
+        return $_SESSION['userId'] ?? null;
     }
 
     /**
-     * Set the value of userId
+     * Set the value of userId to session
      */
     public function setUserId($userId): self
     {
-        $this->userId = $userId;
+        $_SESSION['userId'] = $userId;
 
         return $this;
     }

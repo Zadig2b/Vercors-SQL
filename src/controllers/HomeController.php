@@ -21,6 +21,18 @@ class HomeController
     $this->render("Accueil", ["erreur"=> $erreur]);
   }
 
+  public function test(): void
+  {
+    if (isset($_GET['erreur'])) {
+      $erreur = htmlspecialchars($_GET['erreur']);
+    } else {
+      $erreur = '';
+
+    }
+
+    $this->render("Accueil2", ["erreur"=> $erreur]);
+  }
+
   public function connexion(): void
   {
     if (isset($_GET['erreur'])) {

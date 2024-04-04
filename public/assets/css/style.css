@@ -2,7 +2,8 @@ body {
     
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-image: url("./assets/img/background-pic.png"); */
+    background-image: url("./../img/bg-color.png");
+    align-items: center;
 
 }
 
@@ -111,3 +112,4 @@ fieldset.active {
 #tarifReduit-section {
     display: none;
 }
+
