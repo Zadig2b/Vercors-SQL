@@ -6,10 +6,12 @@ use src\models\Reservation;
 use src\models\Database;
 use PDO;
 use PDOException;
+use src\Services\Hydratation;
 
 class ReservationRepository {
     private $db;
-
+    use Hydratation;
+    
     public function __construct()
     {
        

@@ -56,7 +56,7 @@ switch ($route) {
         // Add dashboard logic here
         $homeController->dashboard();
         break;
-    case HOME_URL . 'reservation':
+    case HOME_URL . 'Reservation':
         if ($method === 'POST') {
             $reservationController->saveReservation();
             echo 'successful reservation';

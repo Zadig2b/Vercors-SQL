@@ -4,11 +4,14 @@ namespace src\controllers;
 use src\models\Database;
 use src\models\Reservation;
 use src\Repositories\ReservationRepository;
+use src\Services\Hydratation;
 use src\Services\Reponse;
+use src\views\reservationTemplate;
 
 class ReservationController {
     private $reservationRepository;
     use Reponse;
+    use Hydratation;
 
     
     public function saveReservation() {
@@ -48,50 +51,53 @@ class ReservationController {
                 // Handle error scenario
             }
         }
+        $showReservationRepo = new ReservationRepository();
+        $newReservation = $showReservationRepo->getAllReservations();
 
-        $this->render('reservationTemplate');
+        $this->render('ReservationTemplate', $newReservation);
     }
 
     public function showReservation() {
         $showReservationRepo = new ReservationRepository();
         $newReservation = $showReservationRepo->getAllReservations();
-        $this->render('reservationTemplate', $newReservation);
-        
+
+        $this->render('ReservationTemplate', $newReservation);
+        print_r($newReservation);
     }
 
 
-    public function traiterDonnees($donnees) {
-        //  ici, faire le traitement des données avant de les enregistrer
+//     public function traiterDonnees($donnees) {
+//         //  ici, faire le traitement des données avant de les enregistrer
 
-        //récupération et nettoyage de chaque champ de "Réservation"
-        $nombrePlaces = $_POST['nombrePlaces'];
-        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarif réduit' : 'plein tarif';
-        $passSelection = $_POST['passSelection'];
-        $prix = $_POST['totalPrice2'] . "€";
-        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
-
-
-        //récupération et nettoyage de chaque champ de "Options"
-        $options = isset($_POST['options']) ? $_POST['options'] : [];
-
-$emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
-$emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';
-$enfants = isset($options['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
-$nombreCasquesEnfants = isset($options['nombreCasquesEnfants']) && !empty($options['nombreCasquesEnfants'])
-    ? htmlspecialchars($options['nombreCasquesEnfants']) . " Casque(s)"
-    : '';
-
-$NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLugesEte'])
-    ? htmlspecialchars($options['NombreLugesEte']) . " luge(s)"
-    : '';
+//         //récupération et nettoyage de chaque champ de "Réservation"
+//         $nombrePlaces = $_POST['nombrePlaces'];
+//         $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarif réduit' : 'plein tarif';
+//         $passSelection = $_POST['passSelection'];
+//         $prix = $_POST['totalPrice2'] . "€";
+//         $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
 
 
-        //récupération et nettoyage de chaque champ de "Coordonnées"
-        $nom = htmlspecialchars($donnees['nom']);
-        $prenom = htmlspecialchars($donnees['prenom']);
-        $email = htmlspecialchars($donnees['email']);
-        $telephone = htmlspecialchars($donnees['telephone']);
-        $adressePostale = htmlspecialchars($donnees['adressePostale']);
+//         //récupération et nettoyage de chaque champ de "Options"
+//         $options = isset($_POST['options']) ? $_POST['options'] : [];
+
+// $emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
+// $emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';
+// $enfants = isset($options['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
+// $nombreCasquesEnfants = isset($options['nombreCasquesEnfants']) && !empty($options['nombreCasquesEnfants'])
+//     ? htmlspecialchars($options['nombreCasquesEnfants']) . " Casque(s)"
+//     : '';
+
+// $NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLugesEte'])
+//     ? htmlspecialchars($options['NombreLugesEte']) . " luge(s)"
+//     : '';
+
+
+//         //récupération et nettoyage de chaque champ de "Coordonnées"
+//         $nom = htmlspecialchars($donnees['nom']);
+//         $prenom = htmlspecialchars($donnees['prenom']);
+//         $email = htmlspecialchars($donnees['email']);
+//         $telephone = htmlspecialchars($donnees['telephone']);
+//         $adressePostale = htmlspecialchars($donnees['adressePostale']);
 
 
 
@@ -103,7 +109,7 @@ $NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLu
         //     $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
         // );
         
-    }
+    // }
         public function quit()
         {
           session_destroy();
