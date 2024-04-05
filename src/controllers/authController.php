@@ -26,6 +26,7 @@ class AuthController
             // Password correct, mark the user as connected
             $_SESSION['connected'] = true;
             $_SESSION['userId'] = $user->getId(); // Store user ID in session
+            $_SESSION['name'] = $user->getName(); // Store user email in session
             
 
             
@@ -65,7 +66,6 @@ public function logout(){
             $email = $_POST['email'];
             $password = $_POST['password'];
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
-
             $role = $_POST['role'];
             $RGPD = isset($_POST['RGPD']) ? 1 : 0; // Convert checkbox value to boolean
 

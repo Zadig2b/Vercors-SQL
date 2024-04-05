@@ -4,12 +4,23 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url("./../img/bg-color.png");
     align-items: center;
+    display: flex;
+    flex-direction: column;
 
 }
 
+li {
+    border: 2px solid black;
+    margin: 20px;
+    max-width: 300px;
 
+}
 
+ul {
+    list-style-type: none; /* Remove the bullet points from unordered lists */
+    max-width: 300px;
 
+  }
 .bouton {
     border: 2px solid black;
     width: fit-content;
@@ -45,7 +56,7 @@ fieldset.active {
 
 @keyframes colorFadeIn {
     from {
-        background-color: brown;
+        background-color: rgb(201, 161, 161);
     }
 
     to {
@@ -59,7 +70,7 @@ fieldset.active {
     }
 
     to {
-        background-color: rgb(117, 194, 128);
+        background-color: rgba(198, 195, 230, 0.644);
 
     }
 }
