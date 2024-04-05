@@ -21,15 +21,14 @@ include 'includes/header.php';
             <?php if (!empty($reservation['id'])) echo "Reservation ID: " . $reservation['id'] . "<br>"; ?>
 <?php if (!empty($reservation['nombrePlaces'])) echo "Nombre de place(s): " . $reservation['nombrePlaces'] . "<br>"; ?>
 <?php if (!empty($reservation['tarifReduit'])) echo "Tarif Reduit: " . $reservation['tarifReduit'] . "<br>"; ?>
-<?php if (!empty($reservation['passSelection'])) echo "Pass Selection: " . $reservation['passSelection'] . "<br>"; ?>
+<?php if (!empty($reservation['passSelection'])) echo  $reservation['passSelection'] . "<br>"; ?>
 <?php if (!empty($reservation['prix'])) echo "Prix: " . $reservation['prix'] . "€" . "<br>"; ?>
-<?php if (!empty($reservation['choixJour'])) echo "Choix du Jour: " . $reservation['choixJour'] . "<br>"; ?>
+<?php if (!empty($reservation['choixJour'])) echo  $reservation['choixJour'] . "<br>"; ?>
 <?php if (!empty($reservation['emplacementTente'])) echo "Emplacement Tente: " . $reservation['emplacementTente'] . "<br>"; ?>
 <?php if (!empty($reservation['emplacementCamion'])) echo "Emplacement Camion: " . $reservation['emplacementCamion'] . "<br>"; ?>
-<?php if (!empty($reservation['enfants'])) echo "Enfants: " . $reservation['enfants'] . "<br>"; ?>
+<?php if (!empty($reservation['enfants'])) echo $reservation['enfants'] . "<br>"; ?>
 <?php if (!empty($reservation['nombreCasquesEnfants'])) echo "Nombre Casques Enfants: " . $reservation['nombreCasquesEnfants'] . "<br>"; ?>
 <?php if (!empty($reservation['NombreLugesEte'])) echo "Nombre Luges Ete: " . $reservation['NombreLugesEte'] . "<br>"; ?>
-<br><br>
             </li>
         <?php endforeach; ?>
     </ul>

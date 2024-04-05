@@ -1,4 +1,4 @@
-@font-face{
+/* @font-face{
   font-family: Azonix;
   src: url('./../fonts/azonix.woff2') format('woff2'),
        url('./../fonts/azonix.woff') format('woff'),
@@ -11,7 +11,7 @@
        url('./../fonts/Comfortaa.woff') format('woff'),
        url('./../fonts/Comfortaa.eot') format('embedded-opentype'),
        url('./../fonts/Comfortaa.ttf')  format('truetype');
-}
+} */
 
 body {
   font-family: Comfortaa;
@@ -23,15 +23,17 @@ body {
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.158);
   margin: 0px 0px 0 0;
   padding: 20px;
   color: white;
+  border-radius: 20px;
 }
 
 #header div {
   display: flex;
   align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo {

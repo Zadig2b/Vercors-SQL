@@ -15,17 +15,17 @@ class ReservationController {
 
     public function __construct()
     {
-        // Initialize the Database class
+        // Initialiser la classe Base de données
         $database = new Database();
 
-        // Get the PDO instance from the Database class
+        // Récupérez l'instance PDO de la classe Database
         $pdo = $database->getDB();
 
         // Initialize the ResaRepository with the PDO instance
         $this->reservationRepository = new ResaRepository($pdo);
     }
     public function saveReservation() {
-    // Check if form submitted
+    // Vérifiez si le formulaire a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Retrieve form data
         $numPlaces = $_POST['nombrePlaces'];
@@ -67,6 +67,8 @@ class ReservationController {
             // Check if reservation saved successfully
             if ($newReservation) {
                 echo "Reservation saved successfully";
+                $this->render("accueil");
+
                 // Redirect or perform other actions as needed
             } else {
                 echo "Failed to save reservation";
@@ -75,14 +77,13 @@ class ReservationController {
     }
 
     
-    // ReservationController.php
 public function showReservation()
 {
-    // Fetch reservations and store them in a variable
-    // Assuming $reservations contains the reservations data
+    //Récupère les réservations et les stocke dans une variable
+    //En supposant que $reservations contient les données de réservation
     $reservations = $this->reservationRepository->getResaByUserId($_SESSION['userId']);
 
-    // Pass the reservations to the dashboard view
+    //Passe les réservations à la vue tableau de bord
     $this->render("dashboard", ["reservations" => $reservations]);
 }
 

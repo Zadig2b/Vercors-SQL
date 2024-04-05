@@ -13,14 +13,28 @@ li {
     border: 2px solid black;
     margin: 20px;
     max-width: 300px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgba(240, 248, 255, 0.219);
 
 }
 
 ul {
     list-style-type: none; /* Remove the bullet points from unordered lists */
-    max-width: 300px;
+    display: flex;
+    flex-direction: row;
 
   }
+
+  #totalPrice {
+    font-weight: bold;
+  }
+
+  /* #coordonnées {
+    display: flex;
+    flex-direction: row;
+  } */
+  
 .bouton {
     border: 2px solid black;
     width: fit-content;

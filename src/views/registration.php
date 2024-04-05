@@ -11,7 +11,7 @@ require_once 'includes/header.php';
     <title>Registration</title>
 </head>
 <body>
-    <h1>Registration</h1>
+    <h1>Inscription</h1>
     <form action="<?php echo HOME_URL; ?>registration" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>

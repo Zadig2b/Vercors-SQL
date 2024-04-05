@@ -2,8 +2,8 @@
       // lors de la mise en open source, remplacer les infos concernant la base de données.
       
       define('DB_HOST', 'localhost');
-      define('DB_NAME', 'my_webapp_13');
-      define('DB_USER', 'my_webapp_13');
+      define('DB_NAME', 'my_webapp__13');
+      define('DB_USER', 'my_webapp__13');
       define('DB_PWD', 'JIdCRCpE2KjvYU6TlrzRTBaYsBMkL7');
       define('PREFIXE', 'vercors_');
       
