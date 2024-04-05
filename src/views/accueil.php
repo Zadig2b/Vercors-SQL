@@ -36,6 +36,8 @@ echo $result;
   <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/style.css">
 </head>
 <body>
+<h1>Réservation</h1>
+
   <div>
   <!-- <img src="./assets/img/background-pic.png" alt=""> -->
   <form action="Reservation" id="inscription" method="POST">
