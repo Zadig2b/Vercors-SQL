@@ -43,7 +43,7 @@ switch ($url) {
 
 
     <?php } else { ?>
-      <a href="<?php echo HOME_URL; ?>">Réservation</a>
+      <!-- <a href="<?php echo HOME_URL; ?>">Réservation</a> -->
       <a href="<?php echo HOME_URL; ?>connexion">Connexion</a>
       <a href="<?php echo HOME_URL; ?>registration">Inscription</a>
     <?php } ?>

@@ -7,14 +7,25 @@ use src\models\Reservation;
 use src\Repositories\ResaRepository;
 use src\Repositories\ReservationRepository;
 use src\Services\Reponse;
+use PDO;
 
 class ReservationController {
     private $reservationRepository;
     use Reponse;
 
-    
+    public function __construct()
+    {
+        // Initialiser la classe Base de données
+        $database = new Database();
+
+        // Récupérez l'instance PDO de la classe Database
+        $pdo = $database->getDB();
+
+        // Initialize the ResaRepository with the PDO instance
+        $this->reservationRepository = new ResaRepository($pdo);
+    }
     public function saveReservation() {
-    // Check if form submitted
+    // Vérifiez si le formulaire a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Retrieve form data
         $numPlaces = $_POST['nombrePlaces'];
@@ -56,82 +67,27 @@ class ReservationController {
             // Check if reservation saved successfully
             if ($newReservation) {
                 echo "Reservation saved successfully";
+                $this->render("accueil");
+
                 // Redirect or perform other actions as needed
             } else {
                 echo "Failed to save reservation";
             }
         }
     }
+
     
+public function showReservation()
+{
+    //Récupère les réservations et les stocke dans une variable
+    //En supposant que $reservations contient les données de réservation
+    $reservations = $this->reservationRepository->getResaByUserId($_SESSION['userId']);
 
-    public function showReservation() {
-        // Initialize Database
-        $database = new Database();
-        $db = $database->getDB();
+    //Passe les réservations à la vue tableau de bord
+    $this->render("dashboard", ["reservations" => $reservations]);
+}
 
-        // Call the repository method to get all reservations
-        $reservationRepository = new ReservationRepository($db);
-        $reservations = $reservationRepository->getAllReservations();
-
-        // Check if reservations retrieved successfully
-        if ($reservations) {
-            // Render the reservation template with the reservations
-            $this->render('reservationTemplate', ['reservations' => $reservations]);
-        } else {
-            // Handle error scenario
-            echo "Failed to retrieve reservations";
-        }
-        $this->render('reservationTemplate');
-
-    }
-        
     
-
-
-    public function traiterDonnees($donnees) {
-        //  ici, faire le traitement des données avant de les enregistrer
-
-        //récupération et nettoyage de chaque champ de "Réservation"
-        $nombrePlaces = $_POST['nombrePlaces'];
-        $tarifReduit = isset($_POST['tarifReduit']) && $_POST['tarifReduit'] === 'on' ? 'tarif réduit' : 'plein tarif';
-        $passSelection = $_POST['passSelection'];
-        $prix = $_POST['totalPrice2'] . "€";
-        $choixJour = isset($_POST['choixJour']) ? htmlspecialchars($_POST['choixJour']) : '';
-
-
-        //récupération et nettoyage de chaque champ de "Options"
-        $options = isset($_POST['options']) ? $_POST['options'] : [];
-
-$emplacementTente = isset($options['tenteNuit']) ? 'Tente: ' . implode(', ', array_keys($options['tenteNuit'])) : '';
-$emplacementCamion = isset($options['vanNuit']) ? 'Van: ' . implode(', ', array_keys(array_filter($options['vanNuit']))) : '';
-$enfants = isset($options['enfantsOui']) ? 'Enfants' : "Pas d'enfants";
-$nombreCasquesEnfants = isset($options['nombreCasquesEnfants']) && !empty($options['nombreCasquesEnfants'])
-    ? htmlspecialchars($options['nombreCasquesEnfants']) . " Casque(s)"
-    : '';
-
-$NombreLugesEte = isset($options['NombreLugesEte']) && !empty($options['NombreLugesEte'])
-    ? htmlspecialchars($options['NombreLugesEte']) . " luge(s)"
-    : '';
-
-
-        //récupération et nettoyage de chaque champ de "Coordonnées"
-        $nom = htmlspecialchars($donnees['nom']);
-        $prenom = htmlspecialchars($donnees['prenom']);
-        $email = htmlspecialchars($donnees['email']);
-        $telephone = htmlspecialchars($donnees['telephone']);
-        $adressePostale = htmlspecialchars($donnees['adressePostale']);
-
-
-
-
-        // $reservation = new Reservation();
-        // $reservation->enregistrerReservation(
-        //     $nom, $prenom, $email, $telephone, $adressePostale, 
-        //     $nombrePlaces, $tarifReduit, $passSelection, $prix, $choixJour,
-        //     $emplacementTente, $emplacementCamion, $enfants, $nombreCasquesEnfants, $NombreLugesEte
-        // );
-        
-    }
         public function quit()
         {
           session_destroy();

@@ -15,9 +15,9 @@ class UserRepository {
     }
 
     public function createUser(User $user) {
-    $query = "INSERT INTO vercors_user (name, surname, phone, address, email, password, role, RGPD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO vercors_user (name, surname, phone, address, email, password, RGPD) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $this->db->prepare($query);
-    $stmt->execute([$user->getName(), $user->getSurname(), $user->getPhone(), $user->getAddress(), $user->getEmail(), $user->getPassword(), $user->getRole(), $user->getRGPD()]);
+    $stmt->execute([$user->getName(), $user->getSurname(), $user->getPhone(), $user->getAddress(), $user->getEmail(), $user->getPassword(), $user->getRGPD()]);
     $userId = $this->db->lastInsertId(); //Obtenez l'ID du dernier utilisateur inséréséréséré
     return $userId; //Renvoyer l'ID utilisateur
 }
@@ -47,7 +47,7 @@ class UserRepository {
                 $user['address'],
                 $user['email'],
                 $user['password'],
-                $user['role'],
+                isset($user['role']) ? $user['role'] : 'user', // Ensure role exists or default to 'user'
                 $user['RGPD']
             );
             $userObject->setId($user['Id_User']); // Set the ID of the user

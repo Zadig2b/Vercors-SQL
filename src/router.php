@@ -14,8 +14,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($route) {
     case HOME_URL:
         if (isset($_SESSION['connected'])) {
-            // header('location: ' . HOME_URL . 'dashboard');
-            // die;
             $homeController->index();
 
         } else {
@@ -50,13 +48,11 @@ switch ($route) {
           break;
 
     case HOME_URL . 'deconnexion':
-        // Add logout logic in AuthController
         $authController->logout();
         break;
 
     case HOME_URL . 'dashboard':
-        // Add dashboard logic here
-        $homeController->dashboard();
+        $reservationController->showReservation();
         break;
     case HOME_URL . 'Reservation':
         if ($method === 'POST') {
@@ -65,8 +61,8 @@ switch ($route) {
         } else {
             $reservationController->showReservation();
 
+
         }
-    // Add more routes as needed
 
     default:
         $homeController->page404();

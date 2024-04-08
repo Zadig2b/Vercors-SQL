@@ -36,8 +36,9 @@ echo $result;
   <link rel="stylesheet" href="<?= HOME_URL ?>assets/css/style.css">
 </head>
 <body>
+<h1>Réservation</h1>
+
   <div>
-  <!-- <img src="./assets/img/background-pic.png" alt=""> -->
   <form action="Reservation" id="inscription" method="POST">
   <input type="hidden" name="totalPrice2" id="totalPriceInput" value="">
     <fieldset id="reservation" class="active">
@@ -95,24 +96,40 @@ echo $result;
 <fieldset id="options" class="inactive">
 <legend>Options</legend>
 <h3>Réserver un emplacement de tente :</h3>
-<input type="checkbox" id="tenteNuit1" name="options[tenteNuit][01/07]" data-price="5">
-<label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-<input type="checkbox" id="tenteNuit2" name="options[tenteNuit][02/07]" data-price="5">
-<label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-<input type="checkbox" id="tenteNuit3" name="options[tenteNuit][03/07]" data-price="5">
-<label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
-<input type="checkbox" id="tenteNuits4" name="options[tenteNuit][01/07,02/07,03/07]" data-price="12">
-<label for="tenteNuit4">Pour les 3 nuits (12€)</label>
+<div>
+  <input type="checkbox" id="tenteNuit1" name="options[tenteNuit][01/07]" data-price="5">
+  <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="tenteNuit2" name="options[tenteNuit][02/07]" data-price="5">
+  <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="tenteNuit3" name="options[tenteNuit][03/07]" data-price="5">
+  <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="tenteNuits4" name="options[tenteNuit][01/07,02/07,03/07]" data-price="12">
+  <label for="tenteNuit4">Pour les 3 nuits (12€)</label>
+</div>
 
 <h3>Réserver un emplacement de camion aménagé : </h3>
-<input type="checkbox" id="vanNuit1" name="options[vanNuit][01/07]" value="01/07" data-price="5">
-<label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-<input type="checkbox" id="vanNuit2" name="options[vanNuit][02/07]" value="02/07" data-price="5">
-<label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-<input type="checkbox" id="vanNuit3" name="options[vanNuit][03/07]" value="03/07" data-price="5">
-<label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
-<input type="checkbox" id="vanNuits4" name="options[vanNuit][01/07,02/07,03/07]" value="01/07,02/07,03/07" data-price="12">
-<label for="vanNuits4">Pour les 3 nuits (12€)</label>
+<div>
+  <input type="checkbox" id="vanNuit1" name="options[vanNuit][01/07]" value="01/07" data-price="5">
+  <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="vanNuit2" name="options[vanNuit][02/07]" value="02/07" data-price="5">
+  <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="vanNuit3" name="options[vanNuit][03/07]" value="03/07" data-price="5">
+  <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
+</div>
+<div>
+  <input type="checkbox" id="vanNuits4" name="options[vanNuit][01/07,02/07,03/07]" value="01/07,02/07,03/07" data-price="12">
+  <label for="vanNuits4">Pour les 3 nuits (12€)</label>
+</div>
 
 
 
@@ -131,14 +148,15 @@ echo $result;
     <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
     <label for="options[NombreLugesEte]">Nombre de descentes en luge d'été :</label>
     <input type="number" name="options[NombreLugesEte]" id="options[NombreLugesEte]">
+    <div><input type="submit" name="soumission" class="bouton" value="Réserver"></div>
 
-    <p class="bouton" onclick="suivant('coordonnees')">Suivant</p>
+    <!-- <p class="bouton" onclick="suivant('coordonnees')">Suivant</p> -->
 </fieldset>
 
 
         <!------------------------------------------- FIN DE LA SECTION OPTIONS  ------------------------------------------------>
 
-    <fieldset id="coordonnees" class="inactive">
+    <!-- <fieldset id="coordonnees" class="inactive">
       <legend>Coordonnées</legend>
         <label for="nom">Nom :</label>
         <input type="text" name="nom" id="nom" required>
@@ -152,7 +170,7 @@ echo $result;
         <input type="text" name="adressePostale" id="adressePostale" required>
 
         <input type="submit" name="soumission" class="bouton" value="Réserver">
-    </fieldset>
+    </fieldset> -->
 
         <!------------------------------------------- FIN DE LA SECTION COORDONNEES  ------------------------------------------------>
         <p id="totalPrice">Prix Total : </p>

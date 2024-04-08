@@ -2,28 +2,39 @@ body {
     
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-image: url("./assets/img/background-pic.png"); */
+    background-image: url("./../img/bg-color.png");
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
 }
 
-fieldset {
-    /* display: flex;
-    flex-direction: column; */
-
-}
-
-/* section {
-      display: flex;
-    flex-direction: row; 
-} */
-
-/* input[type=checkbox] {
-    display: none;
-}
-
-label {
+li {
     border: 2px solid black;
-} */
+    margin: 20px;
+    max-width: 300px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgba(240, 248, 255, 0.219);
+
+}
+
+ul {
+    list-style-type: none; /* Remove the bullet points from unordered lists */
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  #totalPrice {
+    font-weight: bold;
+  }
+
+  /* #coordonnées {
+    display: flex;
+    flex-direction: row;
+  } */
+  
 .bouton {
     border: 2px solid black;
     width: fit-content;
@@ -59,7 +70,7 @@ fieldset.active {
 
 @keyframes colorFadeIn {
     from {
-        background-color: brown;
+        background-color: rgb(201, 161, 161);
     }
 
     to {
@@ -73,7 +84,7 @@ fieldset.active {
     }
 
     to {
-        background-color: rgb(117, 194, 128);
+        background-color: rgba(198, 195, 230, 0.644);
 
     }
 }

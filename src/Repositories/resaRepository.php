@@ -18,7 +18,7 @@ class ResaRepository
     public function createResa(Resa $resa, $userId)
     {
         try {
-            $query = "INSERT INTO resa (nombrePlaces, tarifReduit, passSelection, prix, choixJour, emplacementTente, emplacementCamion, enfants, nombreCasquesEnfants, NombreLugesEte, id_User)
+            $query = "INSERT INTO vercors_reservation (nombrePlaces, tarifReduit, passSelection, prix, choixJour, emplacementTente, emplacementCamion, enfants, nombreCasquesEnfants, NombreLugesEte, id_User)
                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->execute([
@@ -44,7 +44,7 @@ class ResaRepository
     public function getResaById($id)
     {
         try {
-            $query = "SELECT * FROM Resa WHERE id = ?";
+            $query = "SELECT * FROM vercors_reservation WHERE id = ?";
             $stmt = $this->db->prepare($query);
             $stmt->execute([$id]);
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ class ResaRepository
     public function updateResa(Resa $resa)
     {
         try {
-            $query = "UPDATE Resa SET nombrePlaces = ?, tarifReduit = ?, passSelection = ?, prix = ?, choixJour = ?, emplacementTente = ?, emplacementCamion = ?, enfants = ?, nombreCasquesEnfants = ?, NombreLugesEte = ?
+            $query = "UPDATE vercors_reservation SET nombrePlaces = ?, tarifReduit = ?, passSelection = ?, prix = ?, choixJour = ?, emplacementTente = ?, emplacementCamion = ?, enfants = ?, nombreCasquesEnfants = ?, NombreLugesEte = ?
                       WHERE id = ?";
             $stmt = $this->db->prepare($query);
             $stmt->execute([
@@ -83,7 +83,7 @@ class ResaRepository
     public function deleteResa($id)
     {
         try {
-            $query = "DELETE FROM Resa WHERE id = ?";
+            $query = "DELETE FROM vercors_reservation WHERE id = ?";
             $stmt = $this->db->prepare($query);
             $stmt->execute([$id]);
             return true; // Return true if deletion is successful
@@ -92,4 +92,18 @@ class ResaRepository
             return false; // Return false if deletion fails
         }
     }
+
+    public function getResaByUserId($id)
+    {
+        try {
+            $query = "SELECT * FROM vercors_reservation WHERE id_User = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([$id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all reservations
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return []; // Return an empty array if there's an error
+        }
+    }
+    
 }
