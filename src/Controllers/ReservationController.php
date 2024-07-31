@@ -43,7 +43,7 @@ class ReservationController {
         $userId = $_SESSION['userId'] ?? null;
 
     
-            // Create Reservation object
+            //Créer un objet de réservation
             $reservation = new Resa();
             $reservation->setNumPlaces($numPlaces);
             $reservation->setIsDiscounted($isDiscounted);
@@ -56,15 +56,15 @@ class ReservationController {
             $reservation->setNombreCasquesEnfants($nombreCasquesEnfants);
             $reservation->setNombreLugesEte($nombreLugesEte);
     
-            // Initialize Database
+            //Initialiser la base de données
             $database = new Database();
             $db = $database->getDB();
             
-            // Call the repository method to save the reservation
+            //Appelez la méthode du référentiel pour enregistrer la réservation
             $reservationRepository = new ResaRepository($db);
             $newReservation = $reservationRepository->createResa($reservation, $userId);
     
-            // Check if reservation saved successfully
+            //Vérifiez si la réservation a été enregistrée avec succès
             if ($newReservation) {
                 echo "Reservation saved successfully";
                 $this->render("accueil");
